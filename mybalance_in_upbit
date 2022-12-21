@@ -1,0 +1,37 @@
+# 업비트에서 잔고 확인하기
+
+import pyupbit
+import datetime
+import numpy
+import os
+
+# 업비트에서 주는 인증키
+
+access_key = os.environ["access"]          
+secret_key = os.environ["secret"]        
+                   
+                   
+# 여기서부터 잔고 조회
+
+def get_balance(ticker):
+      mybalance = upbit.get_balances()
+      for m in mybalance:
+          if m["currency"] == ticker:
+              if m["balance"] is not None:
+                  return float(m["balance"])
+              else:
+                  return 0
+
+# 로그인 성공
+try: 
+  upbit = pyupbit.Upbit(access, secret)
+  mine = get_balance("KRW")            
+  print("==========로그인 성공==========")
+  
+# 로그인 실패
+except: 
+  print("로그인할 수 없습니다")
+
+else:
+  print("잔고 : "+str(format(int(mine),))+" 원")
+  print("날짜 :"+str(datetime.datetime.now()))
