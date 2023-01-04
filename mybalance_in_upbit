@@ -2,7 +2,7 @@
 
 import pyupbit
 import datetime
-import numpy
+import numpy as np
 import os
 
 # 업비트에서 주는 인증키
@@ -11,7 +11,7 @@ access_key = os.environ["access"]
 secret_key = os.environ["secret"]        
                    
                    
-# 여기서부터 잔고 조회
+# 잔고 조회 과정
 
 def get_balance(ticker):
       mybalance = upbit.get_balances()
@@ -33,5 +33,5 @@ except:
   print("로그인할 수 없습니다")
 
 else:
-  print("잔고 : "+str(format(int(mine),))+" 원")
+  print("잔고 :"+str(format(int(mine),))+" 원")
   print("날짜 :"+str(datetime.datetime.now()))
