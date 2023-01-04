@@ -9,10 +9,8 @@ import os
 
 access_key = os.environ["access"]          
 secret_key = os.environ["secret"]        
-                   
-                   
+                              
 # 잔고 조회 과정
-
 def get_balance(ticker):
       mybalance = upbit.get_balances()
       for m in mybalance:
@@ -24,7 +22,7 @@ def get_balance(ticker):
 
 # 로그인 성공
 try: 
-  upbit = pyupbit.Upbit(access, secret)
+  upbit = pyupbit.Upbit(access_key, secret_key)
   mine = get_balance("KRW")            
   print("==========로그인 성공==========")
   
@@ -34,4 +32,5 @@ except:
 
 else:
   print("잔고 :"+str(format(int(mine),))+" 원")
-  print("날짜 :"+str(datetime.datetime.now()))
+
+print("날짜 :"+str(datetime.datetime.now()))
